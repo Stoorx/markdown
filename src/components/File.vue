@@ -3,7 +3,7 @@
         <div class="fileName">{{file.title}}</div>
         <div class="date">Создан: {{createdDateString}}</div>
         <div class="date">Изменен: {{lastModifiedDateString}}</div>
-        <div class="deleteButton" v-on:click="deleteFile">Удалить</div>
+        <div class="deleteButton" v-on:click.stop="deleteFile">Удалить</div>
     </div>
 </template>
 

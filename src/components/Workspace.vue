@@ -1,15 +1,16 @@
 <template>
     <div class="workspace">
-        <div v-if="file === undefined" class="stub">
+        <div v-if="file == null" class="stub">
             Создайте или выберите файл для просмотра
         </div>
-        <div v-else class="actualWorkspace">
+        <div v-else-if="file != null" class="actualWorkspace">
             <div class="header">
                 <div class="title">{{file.title}}</div>
                 <div class="date">Создан: {{createdDateString}}</div>
                 <div class="date">Изменен: {{lastModifiedDateString}}</div>
-                <div class="linkBtn" v-show="this.file.modified">Сохранить</div>
-                <div class="linkBtn">Удалить</div>
+                <div class="linkBtn" v-show="this.file.modified"
+                     v-on:click.stop="saveFile">Сохранить
+                </div>
             </div>
             <div class="editor">
                 <textarea class="left" v-model="currentFile.content" v-on:input.stop="setModified"></textarea>
@@ -33,6 +34,9 @@
             }
         },
         methods: {
+            saveFile: function () {
+                this.$emit('saveFile', this.currentFile)
+            },
             setModified: function () {
                 if(this.currentFile === undefined)
                     return;
@@ -41,27 +45,24 @@
         },
         computed: {
             createdDateString: function () {
-                if(this.currentFile === undefined)
+                if (this.currentFile == null)
                     return;
                 return this.currentFile.createdDate.toLocaleString()
             },
             lastModifiedDateString: function () {
-                if(this.currentFile === undefined)
+                if (this.currentFile == null)
                     return;
                 return this.currentFile.lastModifiedDate.toLocaleString()
             },
             compiledMarkdown: function () {
-                if(this.currentFile === undefined)
+                if (this.currentFile == null)
                     return;
                 return marked(this.currentFile.content)
             }
         },
         watch: {
-            file: function (newFile, oldFile) {
+            file: function (newFile) {
                 this.currentFile = newFile;
-                if(oldFile === undefined)
-                    return;
-                this.$emit('updateFile', oldFile)
             }
 
         }
