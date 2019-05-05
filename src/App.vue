@@ -22,46 +22,46 @@
         data: function () {
             return {
                 files: [
-                    {
-                        id: 1,
-                        title: "Фаел раз",
-                        createdDate: new Date(),
-                        lastModifiedDate: new Date(),
-                        content: "Азаза",
-                        modified: false
-                    },
-                    {
-                        id: 2,
-                        title: "Фаел два",
-                        createdDate: new Date(),
-                        lastModifiedDate: new Date(),
-                        content: "Азаза2",
-                        modified: false
-                    },
-                    {
-                        id: 3,
-                        title: "Фаел три",
-                        createdDate: new Date(),
-                        lastModifiedDate: new Date(),
-                        content: "Азаза3",
-                        modified: false
-                    },
-                    {
-                        id: 4,
-                        title: "Фаел 4етыре",
-                        createdDate: new Date(),
-                        lastModifiedDate: new Date(),
-                        content: "Азаза4",
-                        modified: false
-                    },
-                    {
-                        id: 5,
-                        title: "Фаел пять",
-                        createdDate: new Date(),
-                        lastModifiedDate: new Date(),
-                        content: "Азаза5",
-                        modified: false
-                    }
+                    // {
+                    //     id: 1,
+                    //     title: "Фаел раз",
+                    //     createdDate: new Date(),
+                    //     lastModifiedDate: new Date(),
+                    //     content: "Азаза",
+                    //     modified: false
+                    // },
+                    // {
+                    //     id: 2,
+                    //     title: "Фаел два",
+                    //     createdDate: new Date(),
+                    //     lastModifiedDate: new Date(),
+                    //     content: "Азаза2",
+                    //     modified: false
+                    // },
+                    // {
+                    //     id: 3,
+                    //     title: "Фаел три",
+                    //     createdDate: new Date(),
+                    //     lastModifiedDate: new Date(),
+                    //     content: "Азаза3",
+                    //     modified: false
+                    // },
+                    // {
+                    //     id: 4,
+                    //     title: "Фаел 4етыре",
+                    //     createdDate: new Date(),
+                    //     lastModifiedDate: new Date(),
+                    //     content: "Азаза4",
+                    //     modified: false
+                    // },
+                    // {
+                    //     id: 5,
+                    //     title: "Фаел пять",
+                    //     createdDate: new Date(),
+                    //     lastModifiedDate: new Date(),
+                    //     content: "Азаза5",
+                    //     modified: false
+                    // }
                 ],
                 currentFile: null,
                 nextId: 10
@@ -69,17 +69,17 @@
         },
         methods: {
             saveFile: function (file) {
-                fetch("http://localhost:8000/save", {
-                    method: "POST",
-                    mode: "cors",
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(file)
-                }).then(function () {
+                // fetch("http://localhost:8000/save", {
+                //     method: "POST",
+                //     mode: "cors",
+                //     headers: {
+                //         "Access-Control-Allow-Origin": "*",
+                //         "Content-Type": "application/json"
+                //     },
+                //     body: JSON.stringify(file)
+                // }).then(function () {
                     file.modified = false;
-                });
+                // });
             },
             addFile: function (fileProp) {
                 let file = {
@@ -105,16 +105,16 @@
                         break;
                     }
                 }
-                fetch("http://localhost:8000/delete", {
-                    method: "POST",
-                    mode: "cors",
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Content-Type": "application/json"
-                    },
-                    cache: "no-cache",
-                    body: JSON.stringify(file)
-                });
+                // fetch("http://localhost:8000/delete", {
+                //     method: "POST",
+                //     mode: "cors",
+                //     headers: {
+                //         "Access-Control-Allow-Origin": "*",
+                //         "Content-Type": "application/json"
+                //     },
+                //     cache: "no-cache",
+                //     body: JSON.stringify(file)
+                // });
             },
             switchWorkspace: function (file) {
                 this.currentFile = file

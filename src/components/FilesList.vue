@@ -2,7 +2,8 @@
     <div class="filesList">
         <input type="text" v-model="newFileName" placeholder="Имя файла"/>
         <button v-on:click="addFile">Добавить файл</button>
-        <file v-for="file in files" v-bind:key="file.id" v-bind:file="file" v-on:click.native="selectFile(file)" v-on:deleteFile="deleteFile"></file>
+        <file v-for="file in files" v-bind:key="file.id" v-bind:file="file" v-on:click.native="selectFile(file)"
+              v-on:deleteFile="deleteFile"></file>
     </div>
 </template>
 
@@ -24,7 +25,9 @@
         },
         methods: {
             addFile: function () {
-                this.$emit('addFile', {name: this.newFileName})
+                if (this.newFileName)
+                    this.$emit('addFile', {name: this.newFileName});
+                this.newFileName = null;
             },
             deleteFile: function (file) {
                 if (file != null) {
@@ -54,9 +57,10 @@
         border-bottom: darkgray 1px solid;
         font-size: 12pt;
     }
+
     button {
         background-color: #42a543;
-        color: #E3E3E3;
+        color: #F3F3F3;
         transition: background-color 0.5s ease;
         width: 100%;
         padding: 5px;

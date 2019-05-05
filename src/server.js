@@ -13,8 +13,7 @@ mongoose
             console.info("Connected")
         },
         error => {
-            console.info("MongoDB connection error" + error);
-            process.exit(0)
+            console.info("MongoDB connection error" + error)
         }).then(
     function () {
 
@@ -75,6 +74,9 @@ mongoose
             });
         });
 
+        app.use('/', function (request, response, next) {
+            response.sendFile("D:/Repos/Web/lab5/dist/" + request.path);
+        });
 
         app.get(function (request, response) {
             response.status(404).sendStatus(404);
@@ -84,7 +86,7 @@ mongoose
             response.status(500).sendStatus(500);
         });
 
-        app.listen(8000);
+        app.listen(8080);
 
     }
 );
